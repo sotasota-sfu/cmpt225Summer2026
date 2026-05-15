@@ -30,17 +30,59 @@ struct Node
     Node* next;
 };
 
+Node *head = nullptr;
+
+bool is_empty(){
+    return (head == nullptr);
+}
+
+void print(){
+    for(Node* p = head; p != nullptr; p = p->next){
+        cout << p->data << " " << endl;
+    }
+}
+
+int size(){
+    int count = 0;
+    for (Node *p = head; p != nullptr; p = p->next)
+    {
+        count++;
+    }
+    return count;
+}
+
+void add_front(string value){
+    head = new Node{value, head};
+}
+
+void remove_front(){
+    if (is_empty())
+    {
+        return;
+    }
+
+    Node* p = head;
+    head = head->next;
+    delete p;
+}
+
+void clear_list(){
+    while(!is_empty())
+    {
+        remove_front();
+    }
+} 
 
 int main()
 {
-    // head = nullptr;
-    // add_front("BOS");
-    // add_front("ATL");
-    // add_front("MSP");
-    // add_front("LAX");
+    head = nullptr;
+    add_front("BOS");
+    add_front("ATL");
+    add_front("MSP");
+    add_front("LAX");
 
-    // print();
-    // cout << "Size: " << size() << endl;
+    print();
+    cout << "Size: " << size() << endl;
 
-    // clear_list();
+    clear_list();
 } // main

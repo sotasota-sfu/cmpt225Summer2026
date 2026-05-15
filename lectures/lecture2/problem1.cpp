@@ -49,7 +49,7 @@ int main()
       //for loop
       for(Node* p = head; //initialization
             p != nullptr; //condition
-            p = p->next // increment
+            p = p->next //
       )
       {
             cout << p->data << " ";
