@@ -109,6 +109,11 @@ yourself!
    
    h. $n^2 + n \log n + 1$ is $O(n^2)$
 
+   i. $an^k$ is $O(n^k)$ for any positive constant $a$ and integer $k \geq 1$
+
+   j. $an^k$ is **not** $O(n^(k-1))$ for any positive constant $a$ and integer
+      $k \geq 1$
+
 8. For each of the following algorithms, give the tightest $O$-notation bound
    for the worst-case running time of each algorithm.
 
