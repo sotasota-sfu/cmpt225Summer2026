@@ -16,8 +16,8 @@ bool is_empty_list(){
 void print(){
       Node *p = head;
       while(p != nullptr){
-            cout << head->data << " ";
-            head = head->next;
+            cout << p->data << " ";
+            p = p->next;
       }
       cout << endl;
 }
@@ -38,7 +38,7 @@ void remove_front(){
       delete p;
 }
 
-void clear(){
+void clear_loop(){
       Node *p = head;
       while (p != nullptr)
       {
@@ -54,7 +54,20 @@ void clear(){
       // }
 }
 
-int size(){
+void clear_rec(){
+      clear_helper(head);
+      head = nullptr;
+}
+
+void clear_helper(Node* p){
+      if(p = nullptr)
+            return;
+
+      clear_helper(p->next);
+      delete p;
+}
+
+int size_loop(){
       Node* p = head;
       int count = 0;
       while(p != nullptr){
@@ -64,7 +77,16 @@ int size(){
       return count;
 }
 
-bool contains(const string &value){
+int size_rec(){
+      return size_helper(head);
+}
+int size_helper(Node* p){
+      if(p = nullptr)
+            return 0;
+      return 1  + size_helper(p->next);
+}
+
+bool contains_loop(const string &value){
       Node* p = head;
       while(p != nullptr){
             if(p->data == value)
@@ -72,6 +94,18 @@ bool contains(const string &value){
             p = p->next;
       }
       return false;
+}
+
+bool contains_rec(const string &value)
+{
+      return contains_helper(head, value);
+}
+bool contains_helper(Node* p, const string &value){
+      if(p == nullptr)
+            return false;
+      if(p->data == value)
+            return true;
+      return contains_helper(p->next, value);
 }
 
 Node *last_node(){
