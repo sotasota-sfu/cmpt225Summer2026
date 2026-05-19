@@ -1,4 +1,4 @@
-// problem2_sol.cpp
+// ll_problem2_sol.cpp
 
 #include <iostream>
 
@@ -20,8 +20,8 @@ using std::string;
 // e. Write add a function called remove_front() that removes the first node
 //    from the list
 // f. Write a function called clear_list() that deletes all the nodes in the
-//   list. Hint: use some of the functions you already wrote to make this
-//   easier.
+//    list. Hint: use some of the functions you already wrote to make this
+//    easier.
 //
 
 struct Node

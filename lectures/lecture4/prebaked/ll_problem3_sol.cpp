@@ -1,4 +1,4 @@
-// problem3.cpp
+// ll_problem3_sol.cpp
 
 #include <iostream>
 
@@ -12,46 +12,47 @@ using std::string;
 // and the destructor clear the list.
 //
 
-class List{
-private:
-    struct Node{
+class List
+{
+  private:
+    struct Node
+    {
         string data;
         Node* next;
     };
+
     Node* head = nullptr;
 
-public:
-    ~List(){
-        clear_list();
-    }
+  public:
+    // destructor: deletes all nodes in the list
+    ~List() { clear_list(); }
 
-    bool is_empty()
-    {
-        return (head == nullptr);
-    }
+    bool is_empty() { return head == nullptr; }
 
     void print()
     {
-        for (Node *p = head; p != nullptr; p = p->next)
+        Node* p = head;
+        while (p != nullptr)
         {
-            cout << p->data << " " << endl;
+            cout << p->data << " ";
+            p = p->next;
         }
+        cout << endl;
     }
 
     int size()
     {
         int count = 0;
-        for (Node *p = head; p != nullptr; p = p->next)
+        Node* p   = head;
+        while (p != nullptr)
         {
             count++;
+            p = p->next;
         }
         return count;
     }
 
-    void add_front(string value)
-    {
-        head = new Node{value, head};
-    }
+    void add_front(string value) { head = new Node{value, head}; }
 
     void remove_front()
     {
@@ -59,9 +60,8 @@ public:
         {
             return;
         }
-
-        Node *p = head;
-        head = head->next;
+        Node* p = head;
+        head    = head->next;
         delete p;
     }
 
@@ -72,7 +72,9 @@ public:
             remove_front();
         }
     }
-};
+
+}; // class List
+
 int main()
 {
     List airports;
@@ -85,5 +87,5 @@ int main()
     airports.print();
     cout << "Size: " << airports.size() << endl;
 
-    // // destructor called automatically: no memory leak
+    // destructor called automatically: no memory leak
 } // main

@@ -1,4 +1,4 @@
-// problem2_sol.cpp
+// ll_problem2_sol.cpp
 
 #include <iostream>
 
@@ -20,8 +20,8 @@ using std::string;
 // e. Write add a function called remove_front() that removes the first node
 //    from the list
 // f. Write a function called clear_list() that deletes all the nodes in the
-//   list. Hint: use some of the functions you already wrote to make this
-//   easier.
+//    list. Hint: use some of the functions you already wrote to make this
+//    easier.
 //
 
 struct Node
@@ -30,48 +30,59 @@ struct Node
     Node* next;
 };
 
-Node *head = nullptr;
+Node* head = nullptr;
 
-bool is_empty(){
-    return (head == nullptr);
+bool is_empty()
+{
+    return head == nullptr;
 }
 
-void print(){
-    for(Node* p = head; p != nullptr; p = p->next){
-        cout << p->data << " " << endl;
+void print()
+{
+    Node* p = head;
+    while (p != nullptr)
+    {
+        cout << p->data << " ";
+        p = p->next;
     }
+    cout << endl;
 }
 
-int size(){
+int size()
+{
     int count = 0;
-    for (Node *p = head; p != nullptr; p = p->next)
+    Node* p   = head;
+    while (p != nullptr)
     {
         count++;
+        p = p->next;
     }
     return count;
 }
 
-void add_front(string value){
+void add_front(string value)
+{
     head = new Node{value, head};
 }
 
-void remove_front(){
+void remove_front()
+{
     if (is_empty())
     {
         return;
     }
-
     Node* p = head;
-    head = head->next;
+    head    = head->next;
     delete p;
 }
 
-void clear_list(){
-    while(!is_empty())
+void clear_list()
+{
+    while (!is_empty())
     {
         remove_front();
     }
-} 
+}
 
 int main()
 {
