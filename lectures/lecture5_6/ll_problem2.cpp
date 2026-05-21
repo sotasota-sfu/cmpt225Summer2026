@@ -27,22 +27,21 @@ using std::string;
 
 class List
 {
-private:
+  private:
     struct Node
     {
         string data;
-        Node *next;
+        Node* next;
     };
 
-    Node *head = nullptr;
+    Node* head = nullptr;
 
-public:
+  public:
     // default constructor
     List() : head(nullptr) {}
 
     // destructor
-    ~List()
-    {
+    ~List() {
         clear_list();
         cout << "destructor called!\n";
     }
@@ -57,7 +56,7 @@ public:
         }
         else
         { // list is not empty
-            Node *p = head;
+            Node* p = head;
             while (p != nullptr)
             {
                 cout << p->data << " ";
@@ -70,7 +69,7 @@ public:
     int size() const
     {
         int count = 0;
-        Node *p = head;
+        Node* p   = head;
         while (p != nullptr)
         {
             count++;
@@ -79,7 +78,7 @@ public:
         return count;
     }
 
-    void add_front(const string &s) { head = new Node{s, head}; }
+    void add_front(const string& s) { head = new Node{s, head}; }
 
     void remove_front()
     {
@@ -90,8 +89,8 @@ public:
         else
         { // not empty
             assert(!is_empty());
-            Node *p = head;
-            head = head->next;
+            Node* p = head;
+            head    = head->next;
             delete p;
         }
     }
