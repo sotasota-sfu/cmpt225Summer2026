@@ -22,7 +22,16 @@ yourself!
   ```
 
 2. Implement a Tic Tac Toe board as a 2D array of characters, and set its
-   entries so it looks like this:
+   entries so it looks something like this:
+
+   ```
+    X | . | .
+   ---+---+---
+    . | O | .
+   ---+---+---
+    X | . | O
+   ---+---+---
+   ```
 
 3. Implement a singly-linked list of strings where nodes are defined like this:
   ```cpp
@@ -35,23 +44,33 @@ yourself!
   ```
    `head` is a pointer to the first node in the list. Then write *and* test
    these functions:
+  
   - `bool is_empty()` returns true if the list is empty, and false otherwise
+  
   - `void print()` prints the list out on the console
+  
   - `void push_front(const string& value)` adds a new node with the given value
   to the front of the list
+  
   - `void remove_front()` removes the first node from the list; if the list is
   empty, does nothing
+  
   - `void clear()` deletes all the nodes in the list; implement it both using a
   loop and using recursion.
+  
   - `int size()` returns the number of nodes in the list; implement it both
   using a loop and using recursion.
+  
   - `bool contains(const string& value)` returns `true` if the list contains a
   node with the given value, and `false` otherwise; implement it both using a
   loop and using recursion.
+  
   - `Node* last_node()` returns a pointer to the last node in the list; returns
   `nullptr` if the list is empty
+  
   - `void push_back(const string& value)` adds a new node with the given value
   to the end of the list
+  
   - `void remove_back()` removes the last node from the list; if the list is
   the list is empty, does nothing
 
@@ -60,6 +79,7 @@ yourself!
     sure to increment/decrement it in the appropriate methods. 
 
 4. Re-do question 3, but this time as a doubly-linked list using this node:
+  
   ```cpp
    struct Node {
       string data;
@@ -71,7 +91,8 @@ yourself!
    Node* tail = nullptr;
   ```
 
-5. List the names, and give examples, of each of the 7 functions used in the book.
+5. List the names, and give examples, of each of the 7 functions used in the
+   book. See section 4.1 of the textbook.
 
 6. State the textbook definition of $f(n)$ is $O(g(n))$.
 
