@@ -69,7 +69,11 @@ class DoublyLinkedList
     DoublyLinkedList() : head(nullptr) { check_rep(); }
 
     // destructor: clears the list when the object is destroyed
-    ~DoublyLinkedList() { clear_list(); }
+    ~DoublyLinkedList()
+    {
+        clear_list();
+        check_rep();
+    }
 
     // returns true if the list is empty, false otherwise
     bool is_empty() const { return head == nullptr; }
