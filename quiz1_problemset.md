@@ -76,7 +76,7 @@ yourself!
 
 3.1 Re-write question 3, except add a private `int` variable that keeps track of
     the size of the list, and return that value when `size()` is called. Make
-    sure to increment/decrement it in the appropriate methods. 
+    sure to increment/decrement the variable in the appropriate methods. 
 
 4. Re-do question 3, but this time as a doubly-linked list using this node:
   
