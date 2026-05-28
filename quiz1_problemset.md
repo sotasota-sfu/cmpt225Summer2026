@@ -145,5 +145,10 @@ yourself!
    i. Calculating the sum $1 + 2 + 3 + ... + n$ using the formula $\frac{n(n+1)}{2}$.
 
 9. What is a **loop invariant**? Why would you use one? Give some examples of
-  loop invariants for this loop:
+   loop invariants for this loop:
 
+   ```cpp
+   for (int i = 0; i < n; i++) {
+     // ...
+   }
+   ```
