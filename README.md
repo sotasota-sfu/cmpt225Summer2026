@@ -10,6 +10,7 @@ that some topics may take more/less time, so the topics are not exact.
 ## Problem Sets
 
 - [Quiz 1 problem set](quiz1_problemset.md). 
+- [Quiz 2 problem set (PDF)](quiz2_problemset.PDF).
 
 ## Using C++
 
