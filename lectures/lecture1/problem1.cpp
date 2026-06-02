@@ -35,10 +35,39 @@ void solution1()
         }
     }
 
+    for(int i = 0; i < N; i++){
+        cout << arr[i] << " ";
+    }
     delete[] arr; // de-allocate array
+}
+
+void recursive_init(int *arr, int N, int i)
+{
+    if (N > i)
+    {
+        if (i % 3 == 0)
+            arr[i] = 4;
+        else if (i % 3 == 1)
+            arr[i] = 5;
+        else
+            arr[i] = 9;
+        recursive_init(arr, N, i + 1);
+    }
+}
+
+
+void solution2(){
+    const int N = 9;
+    int arr[N];
+    recursive_init(arr, N, 0);
+
+    for (int i = 0; i < N; i++)
+    {
+        cout << "arr[" << i << "] = " << arr[i] << endl;
+    }
 }
 
 int main()
 {
-    solution1();
+    solution2();
 }
