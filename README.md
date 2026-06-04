@@ -10,7 +10,7 @@ that some topics may take more/less time, so the topics are not exact.
 ## Problem Sets
 
 - [Quiz 1 problem set](quiz1_problemset.md). 
-- [Quiz 2 problem set (PDF)](quiz2_problemset.PDF).
+- [Quiz 2 problem set (PDF)](quiz2_problemset.pdf).
 
 ## Using C++
 
@@ -28,13 +28,15 @@ This course uses C++ (C++17). Here are some links to help you get started:
     C: drive is in the folder `/mnt/c`.  Your desktop folder should be in
     `/mnt/c/Users/<loginname>`.
 
-    For example, if your Windows login name is `bgates`, then the terminal command
-    `cd /mnt/c/Users/bgates` should take you to your desktop folder. 
+    For example, if your Windows login name is `bgates`, then the terminal
+    command `cd /mnt/c/Users/bgates` should take you to your desktop folder. 
 
-    Any other disks you have can be accessed similarly, e.g. if you have a D: drive it's at `/mnt/d`.
+    Any other disks you have can be accessed similarly, e.g. if you have a D:
+    drive it's at `/mnt/d`.
 
-  - For editing your files and running C++ programs, the [VS Code text editor](https://code.visualstudio.com/) is an excellent (and
-    free!) programming editor that also has direct support for WSL. You can run this in Windows.
+  - For editing your files and running C++ programs, the [VS
+    Code](https://code.visualstudio.com/) is an excellent (and free!)
+    programming editor that also has direct support for WSL.
 
 **On Mac**, you can use the C++ compiler that comes with the standard Terminal
 program . You can install other tools (like `make`) using [the Homebrew package
@@ -43,7 +45,8 @@ manager](https://brew.sh).
 
 ### Getting Your C++ Environment Up and Running
 
-To compile and run C++ programs, you'll want at least these programs installed on your computer:
+To compile and run C++ programs, you'll want at least these programs installed
+on your computer:
 
 - `g++` (for Linux) or `c++` (for macOS) are the compilers we're using in this
   course. A compilers converts C++ source code files into an executable program.
@@ -56,7 +59,7 @@ To compile and run C++ programs, you'll want at least these programs installed o
 - `git` is used for version control, and, while not strictly needed for this
   course, it is a standard development tool that makes it easy to upload/download
   code on websites like [Github](https://githib.com/).
-- A coding editor, such as the popular (and free!) [Visual Studio Code](https://code.visualstudio.com/). 
+- A coding editor, such as the popular (and free!) [VS Code](https://code.visualstudio.com/). 
 
 For Ubuntu Linux (e.g. on Windows WSL), you can install most of the needed
 software by typing this command into a terminal:
