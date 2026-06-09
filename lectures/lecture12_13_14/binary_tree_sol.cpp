@@ -1,5 +1,6 @@
 // binary_tree_sol.cpp
 
+#include <cassert>
 #include <iostream>
 
 using namespace std;
@@ -11,17 +12,36 @@ struct Node
     Node* right;
 };
 
+//
 // root points to the root of the binary tree; if the tree is empty, root is
 // nullptr
+//
 Node* root = nullptr;
+
+bool is_leaf(Node* p)
+{
+    return p != nullptr && p->left == nullptr && p->right == nullptr;
+}
 
 int height(Node* p)
 {
-    if (p == nullptr)
+    if (p == nullptr) // empty tree
     {
         return 0;
     }
-    return 1 + max(height(p->left), height(p->right));
+    else if (is_leaf(p))
+    {
+        return 0;
+    }
+    else
+    {
+        return 1 + max(height(p->left), height(p->right));
+    }
+}
+
+int tree_height()
+{
+    return height(root);
 }
 
 void print_preorder(Node* p)
@@ -82,6 +102,9 @@ int main()
 
     root->right->left  = new Node{4, nullptr, nullptr};
     root->right->right = new Node{5, nullptr, nullptr};
+
+    cout << "Tree height: " << tree_height() << endl;
+    assert(height(root->left) == 0);
 
     cout << "Preorder: ";
     print_preorder(root);
