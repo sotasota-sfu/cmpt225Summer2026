@@ -15,6 +15,15 @@ struct Node
 // nullptr
 Node* root = nullptr;
 
+int height(Node* p)
+{
+    if (p == nullptr)
+    {
+        return 0;
+    }
+    return 1 + max(height(p->left), height(p->right));
+}
+
 void print_preorder(Node* p)
 {
     if (p != nullptr)
