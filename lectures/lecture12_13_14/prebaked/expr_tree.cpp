@@ -34,7 +34,18 @@ bool is_leaf_node(Node* p)
 //
 void print_inorder(Node* p)
 {
-    // ???
+    if(p != nullptr)
+    {
+        if(is_leaf_node(p))
+            cout << p->data;
+        else{
+            cout << "(";
+            print_inorder(p->left);
+            cout << p->data << " ";
+            print_inorder(p->right);
+            cout << ")";
+        }
+    }
 }
 
 void print_inorder_tree()
@@ -54,9 +65,25 @@ int eval(Node* p)
 {
     assert(p != nullptr);
 
-    // ???
-} // eval
-
+    if(is_leaf_node(p))
+        return stoi(p->data);
+    else
+    {
+        int left = eval(p->left);
+        int right = eval(p->right);
+        if(p->data == "+")
+            return left + right;
+        else if(p->data == "-")
+            return left - right;
+        else if (p->data == "*")
+            return left * right;
+        else
+        {
+            cout << "eval: unknown operator: " << p->data << endl;
+            assert(false);
+        }
+    }// eval
+}
 int eval_tree()
 {
     return eval(root);
