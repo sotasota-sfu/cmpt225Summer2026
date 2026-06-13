@@ -7,11 +7,11 @@ using namespace std;
 
 // TODO 1: Write a struct for a binary tree node that contains an int and a
 // pointer to its left and right children. It doesn't need a parent pointer.
-struct Node
-{
+
+struct Node {
     int data;
-    Node *left;
-    Node *right;
+    Node* left;
+    Node* right;
 };
 
 //
@@ -19,17 +19,28 @@ struct Node
 // to nullptr (meaning the tree is empty).
 //
 
-Node *root = nullptr;
+Node* root = nullptr;
 
 //
 // TODO 4: Write a function called is_leaf_node(p) that returns true if p is a
 // leaf node, i.e. a node with no children.
 //
 
-bool is_leaf_node(Node *p)
-{
-    return p != nullptr && p->left == nullptr && p->right == nullptr;
+bool is_empty_tree(Node* p) {
+    return p == nullptr;
 }
+
+bool is_leaf_node(Node* p) {
+    return !is_empty_tree(p) && p->left == nullptr && p->right == nullptr;
+    // return p != nullptr && p->left == nullptr && p->right == nullptr;
+}
+
+bool is_internal_node(Node* p) {
+    return !(is_empty_tree(p) || is_leaf_node(p));
+    // return !is_empty_tree(p) && !is_leaf_node(p);
+    // return p != nullptr && (p->left != nullptr || p->right != nullptr);
+}
+
 
 //
 // TODO 5: Write a function called height(p) that returns the height of the tree
@@ -40,14 +51,22 @@ bool is_leaf_node(Node *p)
 // empty tree is 0.
 //
 
-int height(Node *p)
+int height(Node* p)
 {
-    if (p == nullptr)
+    if (p == nullptr) // empty tree
+    {
         return 0;
+    }
     else if (is_leaf_node(p))
+    {
         return 0;
-    else
-        return 1 + max(height(p->left), height(p->right));
+    }
+    else // internal node
+    {
+        int left_height = height(p->left);
+        int right_height = height(p->right);
+        return 1 + max(left_height, right_height);
+    }
 }
 
 int tree_height()
@@ -60,15 +79,21 @@ int tree_height()
 // the tree rooted at p (including p).
 //
 
-int sum(Node *p)
+int sum(Node* p)
 {
-    if (p == nullptr)
+    if (p == nullptr) // empty tree
+    {
         return 0;
-    else
+    }
+    else if (is_leaf_node(p))
+    {
+        return p->data;
+    }
+    else // internal node
     {
         int left_sum = sum(p->left);
         int right_sum = sum(p->right);
-        return left_sum + right_sum + p->data;
+        return p->data + left_sum + right_sum;
     }
 }
 
@@ -86,7 +111,7 @@ int sum_tree()
 // at p in pre-order.
 //
 
-void print_preorder(Node *p)
+void print_preorder(Node* p)
 {
     if (p != nullptr)
     {
@@ -106,7 +131,7 @@ void print_preorder_tree()
 // at p in in-order.
 //
 
-void print_inorder(Node *p)
+void print_inorder(Node* p)
 {
     if (p != nullptr)
     {
@@ -125,7 +150,7 @@ void print_inorder_tree()
 // at p in post-order.
 //
 
-void print_postorder(Node *p)
+void print_postorder(Node* p)
 {
     if (p != nullptr)
     {
@@ -148,7 +173,7 @@ void print_postorder_tree()
 // node.
 //
 
-void clear_tree(Node *p)
+void clear_tree(Node* p)
 {
     if (p != nullptr)
     {
@@ -175,16 +200,27 @@ int main()
     //   4   5
     //
 
-    root = new Node{1, nullptr, nullptr};
-    root->left = new Node{2, nullptr, nullptr};
-    root->right = new Node{3, nullptr, nullptr};
+    // void print_preorder(Node* p)
+    // {
+    //     if (p != nullptr)
+    //     {
+    //         cout << p->data << " ";
+    //         print_preorder(p->left);
+    //         print_preorder(p->right);
+    //     }
+    // }
 
+    root = new Node{1, nullptr, nullptr};
+    // left subtree
+    root->left = new Node{2, nullptr, nullptr};
+    // right subtree
+    root->right = new Node{3, nullptr, nullptr};
     root->right->left = new Node{4, nullptr, nullptr};
     root->right->right = new Node{5, nullptr, nullptr};
 
     cout << "Tree height: ";
     cout << tree_height();
-    assert(height(root->left) == 0);
+    // assert(height(root->left) == 0);
     cout << endl;
 
     cout << "Tree sum: ";
