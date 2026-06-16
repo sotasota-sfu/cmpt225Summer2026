@@ -164,25 +164,25 @@ int main()
     root->right->right = new Node{5, nullptr, nullptr};
 
     cout << "Tree height: ";
-    // cout << tree_height();
-    // assert(height(root->left) == 0);
+    cout << tree_height();
+    assert(height(root->left) == 0);
     cout << endl;
 
     cout << "Tree sum: ";
-    // cout << sum_tree();
-    // assert(sum_tree() == 15);
+    cout << sum_tree();
+    assert(sum_tree() == 15);
     cout << endl;
 
     cout << "Preorder: ";
-    // print_preorder_tree();
+    print_preorder_tree();
     cout << endl;
 
     cout << "Inorder: ";
-    // print_inorder_tree();
+    print_inorder_tree();
     cout << endl;
 
     cout << "Postorder: ";
-    // print_postorder_tree();
+    print_postorder_tree();
     cout << endl;
 
     cout << "Clearing tree ... \n";

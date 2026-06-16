@@ -37,7 +37,9 @@ LinkedQueue::LinkedQueue()
     back = nullptr;
     count = 0;
 }
-LinkedQueue::~LinkedQueue() {}
+LinkedQueue::~LinkedQueue() {
+    remove_all();
+}
 
 void LinkedQueue::enqueue(const string &item)
 {
@@ -58,11 +60,36 @@ void LinkedQueue::enqueue(const string &item)
     }
     count++;
 }
-void LinkedQueue::dequeue() {}
+void LinkedQueue::dequeue() {
+    if (is_empty())
+    {
+        return;
+    }
+    Node* temp = front;
+    front = front->next;
+    delete temp;
+    count--;
 
-string LinkedQueue::peek_front() const {}
+    if(count == 0)
+    {
+        front = nullptr;
+        back = nullptr;
+    }
+}
 
-bool LinkedQueue::is_empty() const {}
-int LinkedQueue::size() const {}
+string LinkedQueue::peek_front() const {
+    return front->data;
+}
 
-void LinkedQueue::remove_all() {}
+bool LinkedQueue::is_empty() const {
+    return front == nullptr;
+}
+int LinkedQueue::size() const {
+    return count;
+}
+
+void LinkedQueue::remove_all() {
+    while(!is_empty()){
+        dequeue();
+    }
+}

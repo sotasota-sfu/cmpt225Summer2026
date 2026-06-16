@@ -105,3 +105,19 @@ bool is_marched(string str){
       }
       return s.is_empty();
 }
+
+int main()
+{
+      cout << boolalpha;
+
+      cout << is_marched("()") << endl;          // true
+      cout << is_marched("([])") << endl;        // true
+      cout << is_marched("{ f(a[2]) }") << endl; // true
+
+      cout << is_marched("(") << endl;           // false
+      cout << is_marched(")") << endl;           // false
+      cout << is_marched("(]") << endl;          // false
+      cout << is_marched("{ f(a[2)] }") << endl; // false
+
+      return 0;
+}
