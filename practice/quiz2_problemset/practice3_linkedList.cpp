@@ -36,7 +36,12 @@ LinkedStack::~LinkedStack()
 
 void LinkedStack::push(const string &item)
 {
-      top = new Node{item, top};
+      Node* temp = new Node;
+      temp->data = item;
+      temp->next = top;
+      top = temp;
+
+      // top = new Node{item,top};
 }
 
 void LinkedStack::pop()
