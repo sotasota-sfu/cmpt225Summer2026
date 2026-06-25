@@ -1,5 +1,14 @@
 # hash_fn.py
 
+def sum_ascii(s):
+    return sum(ord(c) for c in s)
+
+
+
+
+
+
+
 # polynomial hash function for a string
 def hash(s):
     h = 0
@@ -19,7 +28,8 @@ def hash(s):
 # }
 
 # test the hash function
-print(hash('hello'))
-print(hash('world'))
-print(hash('hello world'))
-print(hash('hello world'))
+def test_hash():
+    print(hash('hello'))
+    print(hash('world'))
+    print(hash('hello world'))
+    print(hash('hello world'))
