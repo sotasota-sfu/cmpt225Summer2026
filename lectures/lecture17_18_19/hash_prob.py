@@ -14,7 +14,7 @@ import random
 #
 # table size
 #
-N = 100
+N = 1000
 
 def do_one_trial():
     # initially empty table
