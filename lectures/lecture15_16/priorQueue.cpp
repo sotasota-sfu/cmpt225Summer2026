@@ -12,47 +12,53 @@ template <typename T>
 class PriorityQueue
 {
 private:
-      Node<T>* head;
+      Node<T> *head;
       int count;
 
 public:
       PriorityQueue();
       ~PriorityQueue();
 
-      bool is_empty()const;
-      int size()const;
+      bool is_empty() const;
+      int size() const;
 
       void insert(const T &item);
-      T Tmin()const;
+      T Tmin() const;
       void removeMin();
 };
 
 template <typename T>
-PriorityQueue<T>::PriorityQueue() {
+PriorityQueue<T>::PriorityQueue()
+{
       head = nullptr;
       count = 0;
 }
 
 template <typename T>
-PriorityQueue<T>::~PriorityQueue(){
-      while(!is_empty()){
+PriorityQueue<T>::~PriorityQueue()
+{
+      while (!is_empty())
+      {
             removeMin();
       }
 }
 
 template <typename T>
-bool PriorityQueue<T>::is_empty() const {
+bool PriorityQueue<T>::is_empty() const
+{
       retuurn head == nullptr;
 }
 
 template <typename T>
-int PriorityQueue<T>::size()const{
+int PriorityQueue<T>::size() const
+{
       return count;
 }
 
 template <typename T>
-void PriorityQueue<T>::insert(const T &item){
-      Node<T>* temp = new Node<T>;
+void PriorityQueue<T>::insert(const T &item)
+{
+      Node<T> *temp = new Node<T>;
       temp->next = head;
       temp->data = item;
       head = temp;
@@ -60,13 +66,55 @@ void PriorityQueue<T>::insert(const T &item){
 }
 
 template <typename T>
-T PriorityQueue<T>::Tmin() const{
+T PriorityQueue<T>::Tmin() const
+{
+      if (is_empty())
+      {
+            throw untime_error("PriorityQueue is empty");
+      }
+
+      Node<T> *temp = head;
+      T minValue = temp->data;
+
+      while (temp != nullptr)
+      {
+            if (temp->data < minValue)
+            {
+                  minValue = temp->data;
+            }
+            temp = temp->next;
+      }
+      return minValue;
 }
 
 template <typename T>
-void PriorityQueue<T>::removeMin(){
+void PriorityQueue<T>::removeMin()
+{
       if (is_empty())
             return;
+
+      Node<T> *temp = head;
+      Node<T> *minNode = head;
+      Node<T> *prev = nullptr;
+      Node<T> *minPrev = nullptr;
+
+      while (temp != nullptr)
+      {
+            if (temp->data < minNode->data)
+            {
+                  minNode = temp;
+                  minPrev = prev;
+            }
+      }
+      if (minNode == head)
+      {
+            head = head->next;
+      }
+      else
+      {
+            minPrev->next = minNode->next;
+      }
+
+      delete minNode;
+      count--;
 }
-
-
