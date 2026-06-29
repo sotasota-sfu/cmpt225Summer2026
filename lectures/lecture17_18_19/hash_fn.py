@@ -3,12 +3,6 @@
 def sum_ascii(s):
     return sum(ord(c) for c in s)
 
-
-
-
-
-
-
 # polynomial hash function for a string
 def hash(s):
     h = 0
