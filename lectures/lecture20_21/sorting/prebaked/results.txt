@@ -1,0 +1,158 @@
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: ospd.txt  (79339 words)
+Duplicates removed: no
+Randomized: no
+
+Algorithm                Time (s)  Comparisons
+-----------------------  --------  -----------
+std::sort                0.000759       158684
+insertion sort           0.000880        79338
+quick sort (rnd pivot)   0.006960      1516025
+merge sort               0.012340       630809
+heap sort                0.021451      2414652
+quick sort (last pivot)  9.831300   3147298791
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: ospd.txt  (79339 words)
+Duplicates removed: no
+Randomized: yes
+
+Algorithm                Time (s)  Comparisons
+-----------------------  --------  -----------
+std::sort                0.009675      1440013
+quick sort (last pivot)  0.010682      1554334
+quick sort (rnd pivot)   0.011277      1581843
+merge sort               0.020049      1192676
+heap sort                0.023174      2341097
+insertion sort           5.889119   1578090646
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: tiny_shakespeare.txt  (202651 words)
+Duplicates removed: no
+Randomized: no
+
+Algorithm                 Time (s)  Comparisons
+-----------------------  ---------  -----------
+std::sort                 0.028652      2590847
+merge sort                0.052811      3315748
+heap sort                 0.069047      6528083
+quick sort (rnd pivot)    0.385766     86295048
+quick sort (last pivot)   0.387114     86847000
+insertion sort           38.842400  10198076233
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: tiny_shakespeare.txt  (25670 words)
+Duplicates removed: yes
+Randomized: no
+
+Algorithm                Time (s)  Comparisons
+-----------------------  --------  -----------
+std::sort                0.003052       439255
+quick sort (last pivot)  0.003250       469741
+quick sort (rnd pivot)   0.003367       468038
+merge sort               0.005935       343740
+heap sort                0.006552       674236
+insertion sort           0.661264    167834944
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+
+File: bill_complete.txt  (67800 words)
+Duplicates removed: yes
+Randomized: no
+
+Algorithm                Time (s)  Comparisons
+-----------------------  --------  -----------
+std::sort                0.008423      1239065
+quick sort (last pivot)  0.009790      1336481
+quick sort (rnd pivot)   0.009881      1317584
+merge sort               0.017102      1001462
+heap sort                0.019944      1965831
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: one_value.txt  (100000 words)
+Duplicates removed: no
+Randomized: no
+
+Algorithm                 Time (s)  Comparisons
+-----------------------  ---------  -----------
+insertion sort            0.000543        99999
+std::sort                 0.000701       200006
+heap sort                 0.001233       299994
+merge sort                0.015284       853904
+quick sort (rnd pivot)   17.984108   4999950000
+quick sort (last pivot)  17.987451   4999950000
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: two_values.txt  (100000 words)
+Duplicates removed: no
+Randomized: no
+
+Algorithm                Time (s)  Comparisons
+-----------------------  --------  -----------
+std::sort                0.006287      1253761
+heap sort                0.011362      1544255
+merge sort               0.016596      1217025
+insertion sort           3.640263   1246934473
+quick sort (last pivot)  7.150687   2500000000
+quick sort (rnd pivot)   7.151528   2500000000
+Running quick sort (last pivot)...
+Running quick sort (rnd pivot)...
+Running merge sort...
+Running heap sort...
+Running std::sort...
+Running insertion sort...
+
+File: half_random_half_sorted.txt  (100000 words)
+Duplicates removed: no
+Randomized: no
+
+Algorithm                Time (s)  Comparisons
+-----------------------  --------  -----------
+std::sort                0.005453      1036582
+quick sort (rnd pivot)   0.009348      1970235
+merge sort               0.018597      1150645
+heap sort                0.023959      3075914
+insertion sort           1.693038    625228559
+quick sort (last pivot)  8.012538   3750925628
+Experiment: ospd.txt (79,000 sorted words) 
+Experiment: ospd.txt (79,000 randomized words) 
+Experiment: tiny_shakespeare.txt (202,651 English words)
+Experiment: tiny_shakespeare.txt (202,651 English words, duplicates removed)
+Experiment: bill_complete.txt (2,145,564 words)
+Experiment: one_value.txt (100,000 copies of the same value)
+Experiment: two_values.txt (100,000 copies of two different values, randomly ordered)
+Experiment: two_values.txt (100,000 copies 1st half random, 2nd half sorted)
