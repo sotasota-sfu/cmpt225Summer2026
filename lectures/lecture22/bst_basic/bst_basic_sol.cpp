@@ -155,7 +155,7 @@ bool contains_loop(Node* p, int k)
         {
             return true;
         }
-        else if (p->key > k)
+        else if (k < p->key)
         {
             p = p->left;
         }
