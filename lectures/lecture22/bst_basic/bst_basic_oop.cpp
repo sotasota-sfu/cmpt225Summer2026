@@ -127,14 +127,25 @@ class Basic_BST
     }
 
     // uses recursion top determine if key is in the tree rooted at p
-    bool contains_rec(Node* p, int k) const
+    bool contains_rec(Node* p, int k)
     {
         assert(is_bst(p));
         if (p == nullptr)
         {
             return false;
         }
-        return p->key == k || contains_rec(p->left, k) || contains_rec(p->right, k);
+        else if (p->key == k)
+        {
+            return true;
+        }
+        else if (k < p->key)
+        {
+            return contains_rec(p->left, k);
+        }
+        else
+        {
+            return contains_rec(p->right, k);
+        }
     }
 
     // uses a loop (and no recursion) to determine if key is in the tree rooted at p
@@ -229,8 +240,8 @@ class Basic_BST
     bool contains_loop(int k) const { return contains_loop(root, k); }
 }; // class Basic_BST
 
-
-int main() {
+int main()
+{
     cout << "Testing Basic_BST..." << endl;
     Basic_BST bst;
     assert(bst.is_bst());
@@ -238,7 +249,7 @@ int main() {
     assert(bst.height() == 0);
     assert(!bst.contains_rec(5));
     assert(!bst.contains_loop(5));
-    
+
     bst.leaf_insert(5);
     assert(bst.is_bst());
     assert(bst.size() == 1);
@@ -249,7 +260,7 @@ int main() {
     assert(bst.min_key_loop() == 5);
     assert(bst.max_key_rec() == 5);
     assert(bst.max_key_loop() == 5);
-    
+
     bst.leaf_insert(3);
     assert(bst.is_bst());
     assert(bst.size() == 2);
