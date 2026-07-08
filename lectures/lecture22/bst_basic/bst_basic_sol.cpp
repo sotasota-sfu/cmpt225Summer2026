@@ -42,46 +42,50 @@ int height(Node* p)
     return 1 + max(height(p->left), height(p->right));
 }
 
-// uses recursion to find the minimum key in the tree rooted at p
-int min_key_rec(Node* p)
+// returns the minimum key in the tree rooted at p; does not require a BST
+int simple_min_key(Node* p)
 {
     assert(p != nullptr);
-    if (p->left == nullptr)
+    int root_key = p->key;
+    if (is_leaf(p)) // no children
     {
-        return p->key;
+        return root_key;
     }
-    return min_key_rec(p->left);
+    else if (p->left == nullptr) // only right child
+    {
+        return min(root_key, simple_min_key(p->right));
+    }
+    else if (p->right == nullptr) // only left child
+    {
+        return min(root_key, simple_min_key(p->left));
+    }
+    else // node with two children
+    {
+        return min(root_key, min(simple_min_key(p->left), simple_min_key(p->right)));
+    }
 }
 
-// uses a loop (and no recursion) to find the minimum key in the tree rooted at p
-int min_key_loop(Node* p)
+// returns the minimum key in the tree rooted at p; does not require a BST
+int simple_max_key(Node* p)
 {
     assert(p != nullptr);
-    while (p->left != nullptr)
+    int root_key = p->key;
+    if (is_leaf(p)) // no children
     {
-        p = p->left;
+        return root_key;
     }
-    return p->key;
-}
-
-int max_key_rec(Node* p)
-{
-    assert(p != nullptr);
-    if (p->right == nullptr)
+    else if (p->left == nullptr) // only right child
     {
-        return p->key;
+        return max(root_key, simple_max_key(p->right));
     }
-    return max_key_rec(p->right);
-}
-
-int max_key_loop(Node* p)
-{
-    assert(p != nullptr);
-    while (p->right != nullptr)
+    else if (p->right == nullptr) // only left child
     {
-        p = p->right;
+        return max(root_key, simple_max_key(p->left));
     }
-    return p->key;
+    else // node with two children
+    {
+        return max(root_key, max(simple_max_key(p->left), simple_max_key(p->right)));
+    }
 }
 
 // returns true if the tree rooted at p is a binary search tree, and false
@@ -98,17 +102,77 @@ bool is_bst(Node* p)
     }
     else if (p->left == nullptr) // only right subtree
     {
-        return p->key < min_key_rec(p->right) && is_bst(p->right);
+        return p->key < simple_min_key(p->right) && is_bst(p->right);
     }
     else if (p->right == nullptr) // only left subtree
     {
-        return max_key_rec(p->left) < p->key && is_bst(p->left);
+        return simple_max_key(p->left) < p->key && is_bst(p->left);
     }
     else // both left and right subtrees
     {
-        return (max_key_rec(p->left) < p->key) && (p->key < min_key_rec(p->right)) &&
+        return (simple_max_key(p->left) < p->key) && (p->key < simple_min_key(p->right)) &&
                is_bst(p->left) && is_bst(p->right);
     }
+}
+
+//
+// The following functions only work correctly if the tree is a BST.
+//
+
+// uses recursion to find the minimum key in the BST rooted at p
+//
+// Pre-condition: p is not nullptr, and the tree is a BST
+int min_key_rec(Node* p)
+{
+    assert(p != nullptr);
+    assert(is_bst(p));
+    if (p->left == nullptr)
+    {
+        return p->key;
+    }
+    return min_key_rec(p->left);
+}
+
+// uses a loop (and no recursion) to find the minimum key in the BST rooted at p
+//
+// Pre-condition: p is not nullptr, and the tree is a BST
+int min_key_loop(Node* p)
+{
+    assert(p != nullptr);
+    assert(is_bst(p));
+    while (p->left != nullptr)
+    {
+        p = p->left;
+    }
+    return p->key;
+}
+
+// uses recursion to find the maximum key in the BST rooted at p
+//
+// Pre-condition: p is not nullptr, and the tree is a BST
+int max_key_rec(Node* p)
+{
+    assert(p != nullptr);
+    assert(is_bst(p));
+    if (p->right == nullptr)
+    {
+        return p->key;
+    }
+    return max_key_rec(p->right);
+}
+
+// uses a loop (and no recursion) to find the maximum key in the BST rooted at p
+//
+// Pre-condition: p is not nullptr, and the tree is a BST
+int max_key_loop(Node* p)
+{
+    assert(p != nullptr);
+    assert(is_bst(p));
+    while (p->right != nullptr)
+    {
+        p = p->right;
+    }
+    return p->key;
 }
 
 // prints the nodes of the tree rooted at p in sorted order (assuming it is a
@@ -131,18 +195,7 @@ bool contains_rec(Node* p, int k)
     {
         return false;
     }
-    else if (p->key == k)
-    {
-        return true;
-    }
-    else if (k < p->key)
-    {
-        return contains_rec(p->left, k);
-    }
-    else
-    {
-        return contains_rec(p->right, k);
-    }
+    return p->key == k || contains_rec(p->left, k) || contains_rec(p->right, k);
 }
 
 // uses a loop (and no recursion) to determine if key is in the tree rooted at p
@@ -155,7 +208,7 @@ bool contains_loop(Node* p, int k)
         {
             return true;
         }
-        else if (k < p->key)
+        else if (p->key > k)
         {
             p = p->left;
         }

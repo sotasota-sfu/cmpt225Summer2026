@@ -45,6 +45,79 @@ class Basic_BST
         return 1 + max(height(p->left), height(p->right));
     }
 
+    // returns the minimum key in the tree rooted at p; does not require a BST
+    int simple_min_key(Node* p) const
+    {
+        assert(p != nullptr);
+        int root_key = p->key;
+        if (is_leaf(p)) // no children
+        {
+            return root_key;
+        }
+        else if (p->left == nullptr) // only right child
+        {
+            return min(root_key, simple_min_key(p->right));
+        }
+        else if (p->right == nullptr) // only left child
+        {
+            return min(root_key, simple_min_key(p->left));
+        }
+        else // node with two children
+        {
+            return min(root_key, min(simple_min_key(p->left), simple_min_key(p->right)));
+        }
+    }
+
+    // returns the minimum key in the tree rooted at p; does not require a BST
+    int simple_max_key(Node* p) const
+    {
+        assert(p != nullptr);
+        int root_key = p->key;
+        if (is_leaf(p)) // no children
+        {
+            return root_key;
+        }
+        else if (p->left == nullptr) // only right child
+        {
+            return max(root_key, simple_max_key(p->right));
+        }
+        else if (p->right == nullptr) // only left child
+        {
+            return max(root_key, simple_max_key(p->left));
+        }
+        else // node with two children
+        {
+            return max(root_key, max(simple_max_key(p->left), simple_max_key(p->right)));
+        }
+    }
+
+    // returns true if the tree rooted at p is a binary search tree, and false
+    // otherwise
+    bool is_bst(Node* p) const
+    {
+        if (p == nullptr) // empty tree
+        {
+            return true;
+        }
+        else if (is_leaf(p)) // leaf node
+        {
+            return true;
+        }
+        else if (p->left == nullptr) // only right subtree
+        {
+            return p->key < simple_min_key(p->right) && is_bst(p->right);
+        }
+        else if (p->right == nullptr) // only left subtree
+        {
+            return simple_max_key(p->left) < p->key && is_bst(p->left);
+        }
+        else // both left and right subtrees
+        {
+            return (simple_max_key(p->left) < p->key) && (p->key < simple_min_key(p->right)) &&
+                   is_bst(p->left) && is_bst(p->right);
+        }
+    }
+
     // uses recursion to find the minimum key in the tree rooted at p
     int min_key_rec(Node* p) const
     {
@@ -87,33 +160,6 @@ class Basic_BST
         return p->key;
     }
 
-    // returns true if the tree rooted at p is a binary search tree, and false
-    // otherwise
-    bool is_bst(Node* p) const
-    {
-        if (p == nullptr) // empty tree
-        {
-            return true;
-        }
-        else if (is_leaf(p)) // leaf node
-        {
-            return true;
-        }
-        else if (p->left == nullptr) // only right subtree
-        {
-            return p->key < min_key_rec(p->right) && is_bst(p->right);
-        }
-        else if (p->right == nullptr) // only left subtree
-        {
-            return max_key_rec(p->left) < p->key && is_bst(p->left);
-        }
-        else // both left and right subtrees
-        {
-            return (max_key_rec(p->left) < p->key) && (p->key < min_key_rec(p->right)) &&
-                   is_bst(p->left) && is_bst(p->right);
-        }
-    }
-
     // prints the nodes of the tree rooted at p in sorted order (assuming it is a
     // BST)
     void print_inorder(Node* p) const
@@ -127,7 +173,7 @@ class Basic_BST
     }
 
     // uses recursion top determine if key is in the tree rooted at p
-    bool contains_rec(Node* p, int k)
+    bool contains_rec(Node* p, int k) const
     {
         assert(is_bst(p));
         if (p == nullptr)
