@@ -1,7 +1,5 @@
 // bst_basic_sol.cpp
 
-
-
 #include <cassert>
 #include <iostream>
 
@@ -108,9 +106,8 @@ bool is_bst(Node* p)
     }
     else // both left and right subtrees
     {
-        return (max_key_rec(p->left) < p->key) && (p->key < min_key_rec(p->right))
-            && is_bst(p->left)
-            && is_bst(p->right);
+        return (max_key_rec(p->left) < p->key) && (p->key < min_key_rec(p->right)) &&
+               is_bst(p->left) && is_bst(p->right);
     }
 }
 
@@ -134,7 +131,18 @@ bool contains_rec(Node* p, int k)
     {
         return false;
     }
-    return p->key == k || contains_rec(p->left, k) || contains_rec(p->right, k);
+    else if (p->key == k)
+    {
+        return true;
+    }
+    else if (k < p->key)
+    {
+        return contains_rec(p->left, k);
+    }
+    else
+    {
+        return contains_rec(p->right, k);
+    }
 }
 
 // uses a loop (and no recursion) to determine if key is in the tree rooted at p
@@ -147,7 +155,7 @@ bool contains_loop(Node* p, int k)
         {
             return true;
         }
-        else if (p->key > k)
+        else if (k < p->key)
         {
             p = p->left;
         }
