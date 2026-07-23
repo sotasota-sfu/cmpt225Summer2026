@@ -1,6 +1,7 @@
 # Word Ladders
 
-A word ladder is a sequence of words where each word is one letter different from the previous word. For example here is a word ladder from `cat` to `dog`:
+A word ladder is a sequence of words where each word is one letter different
+from the previous word. For example here is a word ladder from `cat` to `dog`:
 
 ```
 cat
