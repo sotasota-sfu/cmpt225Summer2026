@@ -44,8 +44,11 @@ while True:
     start = input("Enter a start word: ")
     end = input("Enter an end word: ")
     ladder = find_word_ladder(start, end)
-    words = ', '.join(ladder)
-    print(words)
+    if ladder == '<no ladder>':
+        print("No ladder found")
+    else:
+        words = ', '.join(ladder)
+        print(words)
     print()
 
 #
