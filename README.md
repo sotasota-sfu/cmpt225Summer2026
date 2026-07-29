@@ -16,6 +16,14 @@ that some topics may take more/less time, so the topics are not exact.
 - [Quiz 5 problem set (PDF)](quiz5_problemset.pdf)
 - [(Mostly) OOP problem set (PDF)](oop_problemset.pdf)
 
+## Quiz Sample Solutions
+
+- [Quiz 1 sample solutions (PDF)](quiz1_sol.pdf)
+- [Quiz 2 sample solutions (PDF)](quiz2_sol.pdf)
+- [Quiz 3 sample solutions (PDF)](quiz3_sample_solutions.pdf)
+- [Quiz 4 sample solutions (PDF)](quiz4_sol.pdf)
+- [Quiz 5 sample solutions (PDF)](quiz5_sol.pdf)
+
 ## Using C++
 
 This course uses C++ (C++17). Here are some links to help you get started:
