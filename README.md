@@ -9,11 +9,20 @@ that some topics may take more/less time, so the topics are not exact.
 
 ## Problem Sets
 
-- [Quiz 1 problem set (markdown)](quiz1_problemset.md). 
-- [Quiz 2 problem set (PDF)](quiz2_problemset.pdf).
-- [Quiz 3 problem set (PDF)](quiz3_problemset.pdf).
-- [Quiz 4 problem set (PDF)](quiz4_problemset.pdf).
-- [Quiz 5 problem set (PDF)](quiz5_problemset.pdf).
+- [Quiz 1 problem set (markdown)](quiz1_problemset.md)
+- [Quiz 2 problem set (PDF)](quiz2_problemset.pdf)
+- [Quiz 3 problem set (PDF)](quiz3_problemset.pdf)
+- [Quiz 4 problem set (PDF)](quiz4_problemset.pdf)
+- [Quiz 5 problem set (PDF)](quiz5_problemset.pdf)
+- [(Mostly) OOP problem set (PDF)](oop_problemset.pdf)
+
+## Quiz Sample Solutions
+
+- [Quiz 1 sample solutions (PDF)](quiz1_sol.pdf)
+- [Quiz 2 sample solutions (PDF)](quiz2_sol.pdf)
+- [Quiz 3 sample solutions (PDF)](quiz3_sample_solutions.pdf)
+- [Quiz 4 sample solutions (PDF)](quiz4_sol.pdf)
+- [Quiz 5 sample solutions (PDF)](quiz5_sol.pdf)
 
 ## Using C++
 
