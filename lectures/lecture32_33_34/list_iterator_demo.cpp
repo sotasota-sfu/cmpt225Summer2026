@@ -1,4 +1,4 @@
-// iterator_demo.cpp
+// list_iterator_demo.cpp
 
 #include "iterator.h"
 #include <cassert>
@@ -25,12 +25,12 @@ class LinkedList
     //
     // This is the iterator class for this linked list.
     //
-    class ListIterator : public Iterator<int>
+    class List_forward_iterator : public Iterator<int>
     {
         Node* current;
 
       public:
-        ListIterator(Node* start) : current(start) {}
+        List_forward_iterator(Node* start) : current(start) {}
 
         bool has_next() const override { return current != nullptr; }
 
@@ -44,9 +44,8 @@ class LinkedList
 
     // the user calls this when they want to get an iterator over the linked
     // list
-    ListIterator createIterator() { return ListIterator(head); }
+    List_forward_iterator forward_iterator() { return List_forward_iterator(head); }
 }; // class LinkedList
-
 
 int main()
 {
@@ -57,10 +56,10 @@ int main()
     list.push_front(3);
 
     cout << "Print the list using an iterator ..." << endl;
-    auto iter = list.createIterator();
+    auto iter = list.forward_iterator();
     print(iter);
 
     cout << "Sum the list using an iterator ..." << endl;
-    iter = list.createIterator();
+    iter = list.forward_iterator();
     cout << "Sum: " << sum_list(iter) << endl;
 } // main

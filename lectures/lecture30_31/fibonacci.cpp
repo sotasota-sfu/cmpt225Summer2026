@@ -151,7 +151,7 @@ void time_tests()
 
 int main()
 {
-    correctness_tests();
-    // time_tests();
+    // correctness_tests();
+    time_tests();
     // show_count_calls();
 }
