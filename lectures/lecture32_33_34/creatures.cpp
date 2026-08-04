@@ -23,7 +23,7 @@ class Creature
 {
   public:
     virtual ~Creature() {};           // virtual destructor: essential!
-    virtual string speak() const = 0; // pure virtual = "base class must implement"
+    virtual string speak() const = 0; // pure virtual = "inheriting class must implement"
     virtual string name() const  = 0;
 };
 

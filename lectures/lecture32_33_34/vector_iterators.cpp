@@ -73,7 +73,7 @@ void demo2()
     cout << endl;
 
     // std::sort can also sort regular arrays
-    int arr[9] = {7, 9, 2, 1, 8, 6, 4, 3, 5};
+    
     sort(arr, arr + 9);
     for (int i = 0; i < 9; i++)
     {

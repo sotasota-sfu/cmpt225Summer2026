@@ -21,6 +21,10 @@ We recommend you go through the codes example in this order:
   infinite iterator (because the Fibonacci sequence is infinite), and so there
   is no need to check if there is a next element.
 
+  The [iterator.h](iterator.h) file contains the definition of the `Iterator`
+  base class. It shows how to implement an interface in C++ using pure virtual
+  functions.
+
 - [list_iterator_demo.cpp](list_iterator_demo.cpp): Shows how to use an
   **iterator** to access the elements of a collection without needing access to
   the implementation details of the collection.
