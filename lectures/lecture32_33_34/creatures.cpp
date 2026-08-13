@@ -23,7 +23,7 @@ class Creature
 {
   public:
     virtual ~Creature() {};           // virtual destructor: essential!
-    virtual string speak() const = 0; // pure virtual = "base class must implement"
+    virtual string speak() const = 0; // pure virtual = "inheriting class must implement"
     virtual string name() const  = 0;
 };
 
@@ -59,6 +59,9 @@ class RobotDog : public Creature
 
 int main()
 {
+    // Cannot have a vector<Creature> because Creature objects cannot be
+    // constructed (it is abstract). But a vector of pointers to Creature
+    // objects is okay, because they can point to inherited objects.
     vector<Creature*> zoo;
     zoo.push_back(new Cow());
     zoo.push_back(new Duck());
@@ -67,6 +70,8 @@ int main()
     // print the creatures
     for (Creature* critter : zoo)
     {
+        // in general, we don't know which name() or speak() methods is called
+        // until runtime
         cout << critter->name() << " says " << critter->speak() << "\n";
     }
 

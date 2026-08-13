@@ -13,7 +13,6 @@
 // complexity of the code is higher.
 //
 
-
 #include <cassert>
 #include <iostream>
 #include <unordered_map>

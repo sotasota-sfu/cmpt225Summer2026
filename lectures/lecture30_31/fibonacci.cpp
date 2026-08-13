@@ -1,6 +1,6 @@
 // fibonacci.cpp
 
-#define NDEBUG // uncomment this line to disable assertions
+// #define NDEBUG // uncomment this line to disable assertions
 #include <cassert>
 #include <ctime>
 #include <iostream>
@@ -151,7 +151,7 @@ void time_tests()
 
 int main()
 {
-    correctness_tests();
-    // time_tests();
+    // correctness_tests();
+    time_tests();
     // show_count_calls();
 }
